@@ -1,0 +1,7 @@
+.hero {
+  background-image: url("./flipped-hero-image.jpg");
+  background-size: contain;
+  background-attachment: fixed;
+  /* background-position: 80%; */
+  background-repeat: no-repeat;
+}
