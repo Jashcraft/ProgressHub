@@ -14,6 +14,7 @@ const Form = () => {
           <TextField id={component.toLowerCase()} label={component} variant="outlined" sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff" }} key={component} />
         ))}
         <FormGroup>
+{/* This switch will determine whether a new user is a trainer or a client */}
           <FormControlLabel control={<Switch />} label="Are you a Workout Leader?" sx={{ml: "10px", mb: "10px"}}></FormControlLabel>
         </FormGroup>
         <Button sx={{color: "#00A36C", fontWeight: "bolder"}}>Register</Button>

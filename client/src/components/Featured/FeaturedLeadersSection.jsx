@@ -9,10 +9,12 @@ const FeaturedLeaders = () => {
         <Typography variant='h4' sx={{ width: "100%", textAlign: "center", color: "#fce138", fontWeight: "bold" }}> Featured Trainers</Typography>
           <Grid item display='flex' justifyContent='space-between' xs={12}>
 
+{/* Left grid for showing a trainers avatar. Pulled from DB */}
             <Grid id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center" }} xs={4}>
               <img src={trainerPhoto} alt="trainer /userName/"></img>
             </Grid>
 
+{/* Right grid for showing profile info. Pulled From DB */}
             <Grid display='flex' id="right-grid" sx={{ width: '100%', alignItems: "center"}} xs={8}>
               <Typography variant='h5' textAlign='left'>
                 {/* Pull these fields from user Doc */}

@@ -12,6 +12,7 @@ const Hero = () => {
             <Typography variant='h3' align='center' sx={{color: "#fce138", fontWeight: "bolder"}}>
               Our Mission
             </Typography>
+            {/* This section is the company's 'What Do we Do' statement. */}
             <Typography align='center' sx={{color: "#fce138", fontWeight: "bold"}}>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur aliquid veniam distinctio minus ipsa optio asperiores quia doloribus expedita dolor nesciunt porro, impedit voluptatibus recusandae maiores sunt nemo accusantium consequatur?
             </Typography>
