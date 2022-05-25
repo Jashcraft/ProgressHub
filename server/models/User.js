@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const trainersSchema = new Schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -21,7 +21,7 @@ const trainersSchema = new Schema(
       minlength: 5
     },
 
-    Specialty: {
+    groupSpecialty: {
         type: String,
         required: true,
       },
@@ -55,10 +55,7 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('friendCount').get(function() {
-  return this.friends.length;
-});
 
-const User = model('User', userSchema);
+const User = model('User', UserSchema);
 
-module.exports = Trainers;
+module.exports = User;

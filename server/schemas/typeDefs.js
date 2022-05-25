@@ -1,12 +1,12 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-  type Trainer {
+  type User {
     _id: ID
     username: String
     email: String
     groupSpeciality: String
-    Credentials: String
+  
     
   }
 
