@@ -26,12 +26,12 @@ const userSchema = new Schema(
         required: true,
       },
 
-    clients: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Clients'
-      }
-    ],
+    // clients: [
+    //   {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Clients'
+    //   }
+    // ],
   },
   {
     toJSON: {
@@ -56,6 +56,6 @@ userSchema.methods.isCorrectPassword = async function(password) {
 };
 
 
-const User = model('User', UserSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
