@@ -1,7 +1,22 @@
+body {
+  background-color: #404040;
+}
+
+.featured {
+  background-color: #024e76;
+  border: #fce138 ;
+  border-style: solid;
+  border-radius: 50px;
+} 
+
+
 .hero {
   background-image: url("./flipped-hero-image.jpg");
   background-size: contain;
   background-attachment: fixed;
   /* background-position: 80%; */
   background-repeat: no-repeat;
+  border: #fce138;
+  border-style: solid;
+  border-radius: 50px;
 }
