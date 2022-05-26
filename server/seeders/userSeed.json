@@ -1,14 +1,26 @@
 [
     { 
-        "username" : "Molly48", 
+        "username" : "Molly48",
+        "usertype": 0, 
         "email" : "Molly48_Waters59@hotmail.com", 
         "password" : "kGjRfUNWUIRwfS_", 
         "groupSpecialty" : "ExtremeSports"
     },
     { 
         "username" : "Katlyn85", 
+        "usertype": 1,
         "email" : "Katlyn8550@gmail.com", 
         "password" : "otK5YtXpcalD1cm", 
         "groupSpecialty" : "Lounging"
-    }
+    },
+{
+    "username" : "Josue67", 
+    "usertype": 2,
+    "email" : "Josue6785@yahoo.com", 
+    "password" : "BNsmR75BHDH4na3",
+    "groupSpecialty": "ClientInterest",
+    "clients": [0,1]
+}
+
+ 
 ]

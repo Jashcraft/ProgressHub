@@ -4,13 +4,11 @@ const { User } = require('../models');
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find()
-        .select('-__v -password')
+      return await User.find()
         // .populate('Clients');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username })
-        .select('-__v -password')
+      return await User.findOne({ username })
         // .populate('Clients')
 
     }

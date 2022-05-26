@@ -9,6 +9,13 @@ const userSchema = new Schema(
       unique: true,
       trim: true
     },
+
+    // 0 = admin, 1 = Trainer 2 = client
+    usertype: {
+      type: Schema.Types.Number,
+      required: true,
+      
+    },
     email: {
       type: String,
       required: true,
@@ -26,12 +33,12 @@ const userSchema = new Schema(
         required: true,
       },
 
-    // clients: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Clients'
-    //   }
-    // ],
+    clients: [
+       {
+         type: [Schema.Types.Number],
+         required: false
+       }
+     ],
   },
   {
     toJSON: {

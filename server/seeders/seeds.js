@@ -9,6 +9,20 @@ db.once('open', async () => {
 
       await User.create(userSeeds);
 
+      // copied from module. is this the right setup to add a client to
+     // for (let i = 0; i < thoughtSeeds.length; i++) {
+       // const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
+        // const user = await User.findOneAndUpdate(
+          //{ username: thoughtAuthor },
+          //{
+           // $addToSet: {
+             // thoughts: _id,
+            //},
+          //}
+        //);
+     // }
+
+
     } catch (err) {
       console.error(err);
       process.exit(1);
