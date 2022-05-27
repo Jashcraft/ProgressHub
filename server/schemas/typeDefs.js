@@ -12,7 +12,16 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user: User
-  } 
+  }
+    
+  {
+    type Mutation {
+      login(email: String!, password; String!): User
+      addUser(username: String!, email: String!, password: String!): User
+    }
+  }
   `;
+// Added mutation for login and adduser (From Class Module 21) will see if this is usable.
+
 
   module.exports = typeDefs;
