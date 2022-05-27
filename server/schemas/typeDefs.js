@@ -10,7 +10,6 @@ const typeDefs = gql`
     
   }
 
-
   type Query {
     users: [User]
     user: User
@@ -28,6 +27,6 @@ const typeDefs = gql`
   }
   `;
 
-  // Does addClient need to be addUser?
+
 
   module.exports = typeDefs;
