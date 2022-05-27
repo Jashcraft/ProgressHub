@@ -5,7 +5,7 @@ import './style.css';
 
 const Hero = () => {
   return (
-    <Grid container mb={5} spacing={2} className='hero' sx={{height: '70vh', width: '100%', marginLeft: 0}}>
+    <Grid container mb={5} spacing={2} className='hero' sx={{height: '70vh', width: '100%', marginLeft: 0, marginTop: "10px"}}>
       <Grid item xs={6}>
         <Grid display="flex" justifyContent="center">
           <Grid item>

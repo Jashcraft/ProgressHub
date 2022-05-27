@@ -10,7 +10,7 @@ const Testimonials = () => {
         <Typography variant='h4' sx={{ width: "100%", textAlign: "center", color: "#fce138", fontWeight: "bold" }}>Testimonials From REAL USERS!</Typography>
         <Grid item display='flex' justifyContent='space-between' xs={12}>
 {/* This section is only to display clients avatar. Pulled from DB. */}
-          <Grid id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center" }} xs={4}>
+          <Grid id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center", marginTop: "-50px" }} xs={4}>
             <img src={clientAvatar} alt="user /userName/"></img>
           </Grid>
 {/* This section is to display some basic client info as well as custom Testimonial. Pull from DB. DO NOT INCLUDE LOCATION INFO! */}
