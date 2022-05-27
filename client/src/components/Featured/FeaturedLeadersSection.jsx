@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 import * as React from 'react';
 import trainerPhoto from '../../MockUserInfo/trainer-1.jpg';
 

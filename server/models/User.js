@@ -13,7 +13,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-     
+    
     },
     password: {
       type: String,
@@ -23,7 +23,7 @@ const userSchema = new Schema(
 
     groupSpecialty: {
         type: String,
-        required: true,
+        required: false,
       },
 
     // clients: [
