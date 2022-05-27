@@ -15,6 +15,14 @@ const resolvers = {
 
     }
   },
+  Mutation: {
+    addUser: async () => {
+
+    },
+    login: async () => {
+      
+    }
+  }
 
 }
 
