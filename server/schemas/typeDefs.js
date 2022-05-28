@@ -6,8 +6,12 @@ const typeDefs = gql`
     username: String
     email: String
     groupSpeciality: String
-  
     
+    
+  }
+  type Auth {
+    token: ID!
+    user: User!
   }
   type Query {
     users: [User]
@@ -15,8 +19,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    login(email: String!, password: String!): User
-    addUser(username: String!, email: String!, password: String!, groupSpecialty: String): User
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!, groupSpecialty: String): Auth
   }
   `;
 // Added mutation for login and adduser (From Class Module 21) will see if this is usable.

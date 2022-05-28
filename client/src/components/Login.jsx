@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -12,6 +12,9 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 function Copyright(props) {
   return (
@@ -29,13 +32,19 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [login, {error: loginError}] = useMutation(LOGIN)
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+      const {data} = await login({
+        variables: {
+          email,
+          password
+        }
+      })
+      console.log(data);
+      Auth.login(data.login.token)
   };
 
   return (
@@ -48,7 +57,7 @@ export default function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1505869598013-e93d676a97b5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2669&q=80)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -82,6 +91,7 @@ export default function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 margin="normal"
@@ -92,6 +102,7 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
