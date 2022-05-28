@@ -1,17 +1,46 @@
-import LandingPageHeader from './components/LandingPageHeader';
-import Hero from './components/Hero/Hero'
-import { Container } from '@mui/material';
-import FeaturedLeaders from './components/Featured/FeaturedLeadersSection';
-import Testimonials from './components/Testimonials/Testimonials';
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from './components/Login';
+import LandingPage from "./components/LandingPage";
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 
 function App() {
   return (
-    <>
-      <LandingPageHeader/>
-      <Hero />
-      <FeaturedLeaders></FeaturedLeaders>
-      <Testimonials></Testimonials>
-    </>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+      <Routes>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/' element={<LandingPage/>} />
+      </Routes>
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }
 
