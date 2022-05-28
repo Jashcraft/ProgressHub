@@ -24,7 +24,7 @@ const LandingPageHeader = () => {
               <Button key={button.link} href={button.link} variant="contained" sx={{borderRadius: '20px', mr: '5px',  backgroundColor: '#fce138', color: '#024e76'}}>{button.text}</Button>
             ))}
           </ButtonGroup>
-          <Button sx={{borderRadius: '20px', backgroundColor: '#00A36C', color: '#fff'}}>Login</Button>
+          <Button sx={{borderRadius: '20px', backgroundColor: '#00A36C', color: '#fff'}} href='/login'>Login</Button>
         </Toolbar>
       </AppBar>
     </Box>
