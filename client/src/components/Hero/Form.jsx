@@ -1,23 +1,68 @@
+import { useMutation } from '@apollo/client';
 import { Button, FormControlLabel, FormGroup, Paper, TextField, Typography, Switch } from '@mui/material';
 import { color } from '@mui/system';
-import * as React from 'react';
+import React, {useState} from 'react';
+import Auth from '../../utils/auth';
+import { REGISTER } from '../../utils/mutations';
 
 const formComponents = ["Name", "Email", "Password", "City"]
 
 
 const Form = () => {
+  const [signupData, setSignupData] = useState({
+    email: "",
+    name: "",
+    password: "",
+    city: "",
+  })
+  const [register, {error: registerError}] = useMutation(REGISTER)
+
+  const [isCoachFlag, setIsCoachFlag] = useState(false)
+  const handleCoachToggle = (event) => {
+    setIsCoachFlag(event.target.checked)
+    console.log(isCoachFlag);
+  }
+
+  const handleInputChange = (event) => {
+    const {name, value} = event.target 
+    setSignupData({...signupData, [name]: value})
+    console.log(name, value)
+  }
+
+  const handleSubmit = async (event) => {
+    const {data} = await register({
+      variables: {
+        ...signupData, 
+        isCoach: isCoachFlag
+      }
+    })
+    Auth.login(data.addUser.token)
+  }
+
   return (
     <>
       <Paper elevation={6} sx={{ width: "80%", display: "flex", flexDirection: 'column', backgroundColor: "#024e76", color: "#fff", borderRadius: "50px", borderColor: "#fce138", borderStyle: "solid" }}>
         <Typography variant='h4' sx={{margin: "auto", width: "100%", textAlign: "center", margin: "15px 0px", color: "#fce138", fontWeight: "bold"}}>Join Us Today!</Typography>
         {formComponents.map(component => (
-          <TextField id={component.toLowerCase()} label={component} variant="outlined" sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff" }} key={component} />
+          <TextField 
+          id={component.toLowerCase()} 
+          label={component} 
+          variant="outlined" 
+          sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff" }} 
+          key={component} 
+          onChange={handleInputChange}
+          name={component.toLocaleLowerCase()}
+          type= {component=== "Password" ? 'password' : 'text'}
+          />
         ))}
         <FormGroup>
 {/* This switch will determine whether a new user is a trainer or a client */}
-          <FormControlLabel control={<Switch />} label="Are you a Workout Leader?" sx={{ml: "10px", mb: "10px"}}></FormControlLabel>
+          <FormControlLabel control={<Switch onChange={handleCoachToggle} name="isCoach"/>} label="Are you a Workout Leader?" sx={{ml: "10px", mb: "10px"}}></FormControlLabel>
         </FormGroup>
-        <Button sx={{color: "#00A36C", fontWeight: "bolder"}}>Register</Button>
+        <Button 
+        sx={{color: "#00A36C", fontWeight: "bolder"}}
+        onClick={handleSubmit}
+        >Register</Button>
       </Paper>
     </>
   )

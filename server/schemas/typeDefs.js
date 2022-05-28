@@ -3,10 +3,11 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    username: String
+    name: String
     email: String
     groupSpeciality: String
-    
+    isCoach: Boolean
+    city: String!
     
   }
   type Auth {
@@ -20,7 +21,7 @@ const typeDefs = gql`
 
   type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(username: String!, email: String!, password: String!, groupSpecialty: String): Auth
+    addUser(name: String!, email: String!, password: String!, groupSpecialty: String, isCoach: Boolean!, city: String!): Auth
   }
   `;
 // Added mutation for login and adduser (From Class Module 21) will see if this is usable.
