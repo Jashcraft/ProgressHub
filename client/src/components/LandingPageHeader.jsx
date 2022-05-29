@@ -4,10 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import { ButtonGroup } from '@mui/material';
-import './Hero/style.css'
 import Auth from '../utils/auth';
 
 const navButtons = [{ text: "Our Mission", link: "#our-mission" }, { text: "Featured Leaders", link: "#featured-leaders" }, { text: "Testimonials", link: "#testimonials" }, { text: "Contact Us", link: "#contact-us" }]
