@@ -3,15 +3,15 @@ import AvatarSection from '../AvatarSection';
 import Events from '../Events';
 import InfoSection from '../InfoSection';
 import Profile from '../Profile';
-import CoachHeader from './CoachHeader';
+import ClientHeader from './ClientHeader';
 
 
-const CoachDashboard = () => {
+const ClientDashboard = () => {
   return (
-      <CoachHeader>
+      <ClientHeader>
         <Profile infoSection={<InfoSection/>} avatarSection={<AvatarSection/>} eventSection={<Events/>}></Profile>
-      </CoachHeader>
+      </ClientHeader>
   )
 }
 
-export default CoachDashboard;
+export default ClientDashboard;

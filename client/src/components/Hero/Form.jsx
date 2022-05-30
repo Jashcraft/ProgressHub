@@ -1,17 +1,17 @@
 import { useMutation } from '@apollo/client';
 import { Button, FormControlLabel, FormGroup, Paper, TextField, Typography, Switch } from '@mui/material';
-import { color } from '@mui/system';
 import React, {useState} from 'react';
 import Auth from '../../utils/auth';
 import { REGISTER } from '../../utils/mutations';
 
-const formComponents = ["Name", "Email", "Password", "City"]
+const formComponents = ["First Name", "Last Name", "Email", "Password", "City"]
 
 
 const Form = () => {
   const [signupData, setSignupData] = useState({
     email: "",
-    name: "",
+    firstName: "",
+    lastName: "",
     password: "",
     city: "",
   })
@@ -38,20 +38,20 @@ const Form = () => {
     })
     Auth.login(data.addUser.token)
   }
-
+// DO NOT TOUCH THIS
   return (
     <>
       <Paper elevation={6} sx={{ width: "80%", display: "flex", flexDirection: 'column', backgroundColor: "#024e76", color: "#fff", borderRadius: "50px", borderColor: "#fce138", borderStyle: "solid" }}>
         <Typography variant='h4' sx={{margin: "auto", width: "100%", textAlign: "center", margin: "15px 0px", color: "#fce138", fontWeight: "bold"}}>Join Us Today!</Typography>
         {formComponents.map(component => (
           <TextField 
-          id={component.toLowerCase()} 
+          id={component.split(' ').length > 1 ? component.split(' ').join('').split('').map((char, i) => i === 0 ? char.toLowerCase() : char).join('') : component.toLowerCase()} 
           label={component} 
           variant="outlined" 
           sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff" }} 
-          key={component} 
+          key={component.split(' ').length > 1 ? component.split(' ').join('').split('').map((char, i) => i === 0 ? char.toLowerCase() : char).join('') : component.toLowerCase()} 
           onChange={handleInputChange}
-          name={component.toLocaleLowerCase()}
+          name={component.split(' ').length > 1 ? component.split(' ').join('').split('').map((char, i) => i === 0 ? char.toLowerCase() : char).join('') : component.toLowerCase()}
           type= {component=== "Password" ? 'password' : 'text'}
           />
         ))}
