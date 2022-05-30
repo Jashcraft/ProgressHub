@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
+const Event = require('../models/Event');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -7,6 +8,7 @@ const resolvers = {
     users: async () => {
       return User.find()
         .select('-__v -password')
+        .populate('events');
       // .populate('Clients');
     },
     user: async (parent, { username }) => {
@@ -14,6 +16,14 @@ const resolvers = {
         .select('-__v -password')
       // .populate('Clients')
 
+    },
+    events: async () => {
+      return Event.find()
+      .select('-__v')
+    },
+    event: async (parent, {id}) => {
+      return Event.findOne({id})
+      .select('-__v')
     }
   },
   Mutation: {
@@ -37,6 +47,21 @@ const resolvers = {
       }
       const token = signToken(user)
       return {token, user};
+    },
+    addEvent: async (parent, args, context) => {
+      if (context.user){
+        const {eventInput} = args;
+        const newEvent = await Event.create({...eventInput, ownerID: context.user._id})
+
+        await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: {events: newEvent._id} },
+          { new: true }
+        );
+
+        return newEvent;
+      }
+      throw new AuthenticationError('Incorrect credentials')
     }
   }
 }
