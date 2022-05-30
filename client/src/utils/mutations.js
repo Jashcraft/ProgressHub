@@ -13,8 +13,8 @@ export const LOGIN = gql`
 `
 
 export const REGISTER = gql`
-mutation register ($email: String!, $password: String!, $isCoach: Boolean!, $city: String!, $name: String!){
-  addUser(email: $email, name: $name, city: $city, password: $password, isCoach: $isCoach){
+mutation register ($email: String!, $password: String!, $isCoach: Boolean!, $city: String!, $firstName: String!, $lastName: String!){
+  addUser(email: $email, lastName: $lastName, firstName: $firstName, city: $city, password: $password, isCoach: $isCoach){
     token
     user{
       _id
