@@ -21,6 +21,7 @@ import Auth from '../../../utils/auth'
 import FitnessCenterRoundedIcon from '@mui/icons-material/FitnessCenterRounded';
 import ContactPageRoundedIcon from '@mui/icons-material/ContactPageRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
+import { Link } from 'react-router-dom';
 
 
 const drawerWidth = 240;
@@ -126,49 +127,48 @@ export default function ClientHeader(props) {
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
-        <Divider sx={{ backgroundColor: "whitesmoke" }}/>
+        <Divider sx={{ backgroundColor: "whitesmoke" }} />
         <List>
-          {['My Events', 'Search Events', 'Billing Info'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
+
+          {[{ value: 'My Events', href: "/my-events" }, { value: 'Search Events', href: "/search-events" }, { value: 'Billing Info', href: "/billing" }].map((navButton, index) => (
+            <ListItem key={navButton.value} disablePadding component={Link} to={navButton.href} sx={{color: "whitesmoke"}}>
+              <ListItemButton >
                 <ListItemIcon>
-                  <FitnessCenterRoundedIcon sx={{ color : "whitesmoke" }}/>
+                  <FitnessCenterRoundedIcon sx={{ color: "whitesmoke" }} />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={navButton.value} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
-        <Divider sx={{backgroundColor:"whitesmoke"}} />
+        <Divider sx={{ backgroundColor: "whitesmoke" }} />
         <List>
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <ContactPageRoundedIcon sx={{ color: "whitesmoke"}}/>
-                </ListItemIcon>
-                <ListItemText primary="Contact Us" />
-              </ListItemButton>
-            </ListItem>
+          <ListItem disablePadding component={Link} to="/contact-us">
+            <ListItemButton>
+              <ListItemIcon>
+                <ContactPageRoundedIcon sx={{ color: "whitesmoke" }} />
+              </ListItemIcon>
+              <ListItemText primary="Contact Us" />
+            </ListItemButton>
+          </ListItem>
         </List>
-        <Divider sx={{ backgroundColor: "whitesmoke" }}/>
+        <Divider sx={{ backgroundColor: "whitesmoke" }} />
         <Grid height="100%" display="flex" flexDirection="column-reverse">
           <List>
-            {['Log Out'].map((text, index) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton onClick={Auth.logout} href='/'>
-                  <ListItemIcon>
-                    <LogoutRoundedIcon sx={{ color: "whitesmoke"}}/>
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
+            <ListItem key="Log Out" disablePadding>
+              <ListItemButton onClick={Auth.logout} href='/'>
+                <ListItemIcon>
+                  <LogoutRoundedIcon sx={{ color: "whitesmoke" }} />
+                </ListItemIcon>
+                <ListItemText primary="Log Out" />
+              </ListItemButton>
+            </ListItem>
           </List>
         </Grid>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-          {props.children}
+        {props.children}
       </Main>
     </Box>
   );

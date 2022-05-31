@@ -30,20 +30,26 @@ const userSchema = new Schema(
       required: false,
     },
     isCoach: {
-      type: Boolean,
+      type: Boolean, 
       required: true
     },
     city: {
       type: String,
       required: true
-    }
-
-    // clients: [
-    //   {
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Clients'
-    //   }
-    // ],
+    },
+    state: {
+      type: String
+    },
+    motto: {
+      type: String
+    },
+    why: {
+      type: String
+    },
+    events: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Event'
+    }]
   },
   {
     toJSON: {
