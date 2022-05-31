@@ -37,6 +37,15 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
+    state: {
+      type: String
+    },
+    motto: {
+      type: String
+    },
+    why: {
+      type: String
+    },
     events: [{
       type: Schema.Types.ObjectId,
       ref: 'Event'

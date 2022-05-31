@@ -21,6 +21,11 @@ mutation register ($email: String!, $password: String!, $isCoach: Boolean!, $cit
       email
     }
   }
-}
+}`
 
-`
+export const ADDEVENT = gql`
+mutation addevent ($eventInput: EventInput!) {
+  addEvent(eventInput: $eventInput){
+    _id
+  }
+}`
