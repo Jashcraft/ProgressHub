@@ -50,7 +50,7 @@ const Form = () => {
           key={component.name} 
           onChange={handleInputChange}
           name={component.name}
-          type= {component=== "Password" ? 'password' : 'text'}
+          type= {component.value === "Password" ? 'password' : 'text'}
           />
         ))}
         <FormGroup>
