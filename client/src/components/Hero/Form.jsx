@@ -46,7 +46,7 @@ const Form = () => {
           id={component.name} 
           label={component.name} 
           variant="outlined" 
-          sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff" }} 
+          sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff", borderRadius: "50px", marginLeft: "65px" }} 
           key={component.name} 
           onChange={handleInputChange}
           name={component.name}
@@ -55,7 +55,7 @@ const Form = () => {
         ))}
         <FormGroup>
 {/* This switch will determine whether a new user is a trainer or a client */}
-          <FormControlLabel control={<Switch onChange={handleCoachToggle} name="isCoach"/>} label="Are you a Workout Leader?" sx={{ml: "10px", mb: "10px"}}></FormControlLabel>
+          <FormControlLabel control={<Switch onChange={handleCoachToggle} name="isCoach"/>} label="Are you a Workout Leader?" sx={{ml: "150px", mb: "10px"}}></FormControlLabel>
         </FormGroup>
         {registerError && (<Typography>{registerError}</Typography>)}
         <Button 
