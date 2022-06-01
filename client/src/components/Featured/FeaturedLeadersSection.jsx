@@ -10,7 +10,7 @@ const FeaturedLeaders = () => {
           <Grid item display='flex' justifyContent='space-between' xs={12}>
 
 {/* Left grid for showing a trainers avatar. Pulled from DB */}
-            <Grid item id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center" }} xs={4}>
+            <Grid item id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center", marginTop: "-110px" }} xs={4}>
               <img src={trainerPhoto} alt="trainer /userName/"></img>
             </Grid>
 
