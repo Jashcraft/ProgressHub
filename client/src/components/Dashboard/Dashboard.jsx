@@ -2,6 +2,7 @@ import * as React from 'react';
 import CoachDashboard from './Coach/CoachDashboard';
 import ClientDashboard from './Client/ClientDashboard';
 import Auth from '../../utils/auth'
+import './Dashboard.css'
 
 
 const Dashboard = () => {
