@@ -10,12 +10,12 @@ const FeaturedLeaders = () => {
           <Grid item display='flex' justifyContent='space-between' xs={12}>
 
 {/* Left grid for showing a trainers avatar. Pulled from DB */}
-            <Grid id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center", marginTop: "-105px" }} xs={4}>
+            <Grid item id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center" }} xs={4}>
               <img src={trainerPhoto} alt="trainer /userName/"></img>
             </Grid>
 
 {/* Right grid for showing profile info. Pulled From DB */}
-            <Grid display='flex' id="right-grid" sx={{ width: '100%', alignItems: "center"}} xs={8}>
+            <Grid item display='flex' id="right-grid" sx={{ width: '100%', alignItems: "center"}} xs={8}>
               <Typography variant='h5' textAlign='left'>
                 {/* Pull these fields from user Doc */}
                 <Grid sx={{ borderColor: '#fce138', borderRadius: '50px', borderStyle: 'solid', marginBottom: "50px", marginLeft: "60px"}}>

@@ -1,14 +1,20 @@
 [
-    { 
-        "username" : "Molly48", 
-        "email" : "Molly48_Waters59@hotmail.com", 
-        "password" : "kGjRfUNWUIRwfS_", 
-        "groupSpecialty" : "ExtremeSports"
-    },
-    { 
-        "username" : "Katlyn85", 
-        "email" : "Katlyn8550@gmail.com", 
-        "password" : "otK5YtXpcalD1cm", 
-        "groupSpecialty" : "Lounging"
-    }
+  {
+    "firstName": "Steven",
+    "lastName": "O'Hollin",
+    "email": "Molly48_Waters59@hotmail.com",
+    "password": "kGjRfUNWUIRwfS_",
+    "groupSpecialty": "ExtremeSports",
+    "isCoach": true,
+    "city": "Detroit"
+  },
+  {
+    "firstName": "Kate",
+    "lastName": "McGuinness",
+    "email": "Katlyn8550@gmail.com",
+    "password": "otK5YtXpcalD1cm",
+    "groupSpecialty": "Lounging",
+    "isCoach": false,
+    "city": "Wakanda"
+  }
 ]
