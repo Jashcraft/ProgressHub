@@ -1,32 +1,30 @@
-import { Grid, TextareaAutosize, Typography } from '@mui/material';
+import { useQuery } from '@apollo/client';
+import { Grid, Typography } from '@mui/material';
 import * as React from 'react';
-
+import { ME } from '../../utils/queries';
 
 const InfoSection = (props) => {
+  const {loading, data: userData} = useQuery(ME)
+  
   return (
     <Grid container display='flex' flexGrow={1}>
       <Typography variant="h4">About Me</Typography>
-      <Grid container display='flex' flexGrow={1} flexDirection='column'>
+      {!loading && <Grid container display='flex' flexGrow={1} flexDirection='column'>
         <Typography>
-          My Motto: <span>"Eat Chips"</span>
+          My Motto: {userData.me.motto}
         </Typography>
         <Typography>
-          Workout Types: <span>"Water Combat"</span>
+          Workout Types: {userData.me.groupSpecialty}
         </Typography>
         <Typography>
-          City: <span>Denver</span>
+          City: {userData.me.city}
         </Typography>
         <Typography>
-          State: <span>CO</span>
+          State: {userData.me.state}
         </Typography>
         <Typography variant="h6">Why am I here ?</Typography>
-        {props.editing ? <TextareaAutosize>
-          "Hi, I am here to train the peeps in extreme water combat sports!"
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, debitis. Eos reiciendis nostrum veritatis et, est delectus sequi nobis labore voluptas similique cupiditate, consequuntur quaerat. Omnis explicabo aut dolorum sunt!
-        </TextareaAutosize> : <Typography>"Hi, I am here to train the peeps in extreme water combat sports!"
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore, debitis. Eos reiciendis nostrum veritatis et, est delectus sequi nobis labore voluptas similique cupiditate, consequuntur quaerat. Omnis explicabo aut dolorum sunt!
-        </Typography>}
-      </Grid>
+        <Typography>{userData.me.why}</Typography>
+      </Grid>}
     </Grid>
   )
 }

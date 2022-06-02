@@ -29,3 +29,12 @@ mutation addevent ($eventInput: EventInput!) {
     _id
   }
 }`
+
+export const EDITUSER = gql`
+mutation userUpdate ($userUpdateInput: UpdateUserInput!) {
+  userUpdate(userUpdateInput: $userUpdateInput){
+    _id
+  }
+}
+
+`
