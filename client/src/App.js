@@ -2,6 +2,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from './components/Login';
 import LandingPage from "./components/LandingPage";
+import './App.css'
 
 import {
   ApolloClient,
@@ -14,7 +15,6 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import CreateEvent from "./components/Events/CreateEvent";
 import ProfileEdit from "./components/Dashboard/Edit/ProfileEdit";
 import ContactPage from "./components/ContactPage/ContactPage";
-
 
 const httpLink = createHttpLink({
   uri: '/graphql',

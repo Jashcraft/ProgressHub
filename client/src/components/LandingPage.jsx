@@ -1,16 +1,18 @@
 import * as React from 'react';
 import LandingPageHeader from './LandingPageHeader';
-import Hero from './Hero/Hero'
+import Mission from './Hero/Mission'
 import FeaturedLeaders from './Featured/FeaturedLeadersSection';
 import Testimonials from './Testimonials/Testimonials';
+import Hero from './Hero/Hero';
 
 const LandingPage = () => {
   return (
     <>
       <LandingPageHeader />
       <Hero />
-      <FeaturedLeaders></FeaturedLeaders>
-      <Testimonials></Testimonials>
+      <Mission />
+      <FeaturedLeaders/>
+      <Testimonials/>
     </>
   )
 }

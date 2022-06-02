@@ -5,21 +5,21 @@ import trainerPhoto from '../../MockUserInfo/trainer-1.jpg';
 const FeaturedLeaders = () => {
   return (
     <>
-      <Grid container spacing={2} className='featured' id="featured-leaders" sx={{ height: '45vh', width: '100%', marginLeft: 0, mb: "40px" }} >
+      <Grid item xs={12} sm={6} container spacing={2} className='featured' id="featured-leaders" sx={{ height: '45vh', width: '100%', marginLeft: 0, mb: "40px" }} >
         <Typography variant='h4' sx={{ width: "100%", textAlign: "center", color: "#fce138", fontWeight: "bold", marginTop: "50px", marginLeft: "230px" }}> Featured Trainers</Typography>
-          <Grid item display='flex' justifyContent='space-between' xs={12}>
+          <Grid item display='flex' justifyContent='space-between' xs={12} sm={6}>
 
 {/* Left grid for showing a trainers avatar. Pulled from DB */}
-            <Grid item id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center", marginTop: "-100px" }} xs={4}>
+            <Grid item id="left-grid" justifyContent="center" sx={{ width: '100%', textAlign: "center", justifyContent: "center", marginTop: "-100px" }} xs={12} sm={6}>
               <img src={trainerPhoto} alt="trainer /userName/"></img>
             </Grid>
 
 {/* Right grid for showing profile info. Pulled From DB */}
-            <Grid item display='flex' id="right-grid" sx={{ width: '100%', alignItems: "center"}} xs={8}>
+            <Grid item display='flex' id="right-grid" sx={{ width: '100%', alignItems: "center"}} xs={12} sm={6}>
               <Typography variant='h5' textAlign='left'>
                 {/* Pull these fields from user Doc */}
-                <Grid sx={{ borderColor: '#fce138', borderRadius: '50px', borderStyle: 'solid', marginBottom: "50px", marginLeft: "60px"}}>
-                  <Grid sx={{margin: "10px", padding: "9px", color: "#fff"}}>
+                <Grid xs={12} sm={6} sx={{ borderColor: '#fce138', borderRadius: '50px', borderStyle: 'solid', marginBottom: "50px", marginLeft: "60px"}}>
+                  <Grid xs={12} sm={6} sx={{margin: "10px", padding: "9px", color: "#fff"}}>
                     <Typography><span style={{fontWeight: "bolder"}}>Name: </span>Trainer 1 "steve"</Typography>
                     <Typography><span style={{fontWeight: "bolder"}}>Specialty: </span>Competitive Athletics</Typography>
                     <Typography><span style={{fontWeight: "bolder"}}>Cities: </span>Phoenix, Tuscon, Santa Fe</Typography>

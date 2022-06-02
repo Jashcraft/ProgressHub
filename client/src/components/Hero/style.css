@@ -11,12 +11,17 @@ body {
 
 
 .hero {
-  background-image: url("./flipped-hero-image.jpg");
-  background-size: contain;
-  background-attachment: fixed;
   /* background-position: 80%; */
-  background-repeat: no-repeat;
   border: #fce138;
   border-style: solid;
   border-radius: 50px;
+}
+
+.banner{
+  background-image: url("./flipped-hero-image.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 30vh;
 }
