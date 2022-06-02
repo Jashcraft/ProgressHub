@@ -24,7 +24,7 @@ const typeDefs = gql`
     location: String
     timeSlot: String
     duration: Int
-    ownerID: ID
+    ownerID: User
     participants: [User]
   }
   input EventInput {
@@ -60,6 +60,7 @@ const typeDefs = gql`
     addUser(firstName: String!, lastName: String!, email: String!, password: String!, groupSpecialty: String, isCoach: Boolean!, city: String!): Auth
     addEvent(eventInput: EventInput): Event
     userUpdate(userUpdateInput: UpdateUserInput): User
+    registerEvent(eventId: ID): User
   }
   `;
 // Added mutation for login and adduser (From Class Module 21) will see if this is usable.

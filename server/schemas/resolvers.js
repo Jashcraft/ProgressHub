@@ -1,6 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
-const Event = require('../models/Event');
+const { User, Event } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -19,8 +18,18 @@ const resolvers = {
 
     },
     events: async () => {
-      return Event.find()
-      .select('-__v')
+      console.log('I am here');
+      try {
+        const events = await Event.find()
+        .select('-__v')
+        .populate('participants')
+        .populate('ownerID');
+
+        return events;
+      } catch(err) {
+        console.log(err)
+      }
+
     },
     event: async (parent, {id}) => {
       return Event.findOne({id})
@@ -86,6 +95,22 @@ const resolvers = {
           { new: true }
         )
         return updatedUser;
+      }
+      throw new AuthenticationError('T̸͉̹̟̝̪͂̾̓̒̎̔̿̀͝H̵͕͔̦͑̐̌̑̃͌͆͂̓̏̈́̕͘͝Ề̴̢̛̠̫͉͖̙͇̊̓̈́̄̇͋̊̈͝ͅ ̷̧͖̱̣͍̹͈̲̤̘͔̳̗͈̱̈́̈͂̎͋̇̅̔̈̓͒͑̆͠U̶̢̲̯̣̥̜̩̎̓̂͘͜S̴̢̘̞͚̜͔̲̻͖͉̝̦̱̳̅̀͗̊͒̽̍̊͂̅͜͝E̸̠͌͐̓̈́́̃̀̀̔̄̄̈͑͘͠͝R̴̢̛̥̖͓̞̳͉̰̰̩͖̺̹̔̒̊͗̇̋͂̔̽͂͘̚̕͘̕ͅ ̵̧̬̹͔̯̱̝͔͔̬̤̙̟̗̈́͂̓̑͗͋̎̌̈̉̈́͋̂̕̕͝͝͝I̷̡̠̺͕͖͔̤̹̹͈̤͐̇̐̌̾̽͂̈́̈́̉͌́̆ͅŠ̶͎͖͓͚͓̲͝ ̵̢̡͈̦̪̪̝͙̟̫͊̇̓̀̃̎͒͗̕̕ͅĨ̶̡̹͇̯̭̣̼͚̺̣̦͈̬̺̗̳͉̑̎̀̐̍̊͑̃̅̆̒́͌̓̂̔ͅǸ̷͇͈̹͉̦̞̖̹̟̰̞̌̈́̿͊̄͂͘͝ ̶̢̥̗̦̙̦̝͔̥̠̗̭̫͔̜̐͜ͅÃ̷̧̢̭̫̟̯̹͇̊̉̇͊̚̚̕͜͝ ̸̛̲͈̣̗͔̹̭̳̳͕̀̋͗͑́̚͝ͅB̸̢̨̛͇̤̩̬͙̠͔̮̩̮͈͕̰̈̓͋̍͐͊̀̐́̿̂̾̎È̶͍͑̎̎͋̒̽͂̃̆͒Ţ̴̮̩͉̝̱͓̼̟̃̄̀̽̎̏͒̿̓͒͗́͘̕T̵̨̠͓̞̝͓͈̬̝͐́̈̈́̇̂͌̎̈́̒͝E̷͍̜̺̼̯̔̅̉̃Ŗ̸̪̝̰̝̇͐̓̅̔̽̏͛͆̐͆̈́̚̚ ̷̨̦͖̫̬̦̙̩̀̒̀͂̾͛̓̃̀̕P̴̛̘̺͈̬̺̱̒̋͆́͐͒̏̿̿͜Ļ̶̼͈̮̮̇A̷̯͎̩̼̙͙͊͑͒C̸͍̩̰̞̣̞͛̌̌̅́͝E̴̢̨̞̻͙̳̠̟̯̲͚͇̰͉̋̋̐͝')
+    },
+    registerEvent: async (parent, args, context) => {
+      if(context.user){
+        const {eventId} = args;
+        const updatedUser = await User.findByIdAndUpdate(
+          {_id: context.user._id},
+          {$push: {events: eventId}},
+          {new: true}
+        )
+        const updatedEvent = await Event.findByIdAndUpdate(
+          {_id: eventId},
+          {push: {participants: context.user._id}}
+        )
+        return updatedUser
       }
       throw new AuthenticationError('T̸͉̹̟̝̪͂̾̓̒̎̔̿̀͝H̵͕͔̦͑̐̌̑̃͌͆͂̓̏̈́̕͘͝Ề̴̢̛̠̫͉͖̙͇̊̓̈́̄̇͋̊̈͝ͅ ̷̧͖̱̣͍̹͈̲̤̘͔̳̗͈̱̈́̈͂̎͋̇̅̔̈̓͒͑̆͠U̶̢̲̯̣̥̜̩̎̓̂͘͜S̴̢̘̞͚̜͔̲̻͖͉̝̦̱̳̅̀͗̊͒̽̍̊͂̅͜͝E̸̠͌͐̓̈́́̃̀̀̔̄̄̈͑͘͠͝R̴̢̛̥̖͓̞̳͉̰̰̩͖̺̹̔̒̊͗̇̋͂̔̽͂͘̚̕͘̕ͅ ̵̧̬̹͔̯̱̝͔͔̬̤̙̟̗̈́͂̓̑͗͋̎̌̈̉̈́͋̂̕̕͝͝͝I̷̡̠̺͕͖͔̤̹̹͈̤͐̇̐̌̾̽͂̈́̈́̉͌́̆ͅŠ̶͎͖͓͚͓̲͝ ̵̢̡͈̦̪̪̝͙̟̫͊̇̓̀̃̎͒͗̕̕ͅĨ̶̡̹͇̯̭̣̼͚̺̣̦͈̬̺̗̳͉̑̎̀̐̍̊͑̃̅̆̒́͌̓̂̔ͅǸ̷͇͈̹͉̦̞̖̹̟̰̞̌̈́̿͊̄͂͘͝ ̶̢̥̗̦̙̦̝͔̥̠̗̭̫͔̜̐͜ͅÃ̷̧̢̭̫̟̯̹͇̊̉̇͊̚̚̕͜͝ ̸̛̲͈̣̗͔̹̭̳̳͕̀̋͗͑́̚͝ͅB̸̢̨̛͇̤̩̬͙̠͔̮̩̮͈͕̰̈̓͋̍͐͊̀̐́̿̂̾̎È̶͍͑̎̎͋̒̽͂̃̆͒Ţ̴̮̩͉̝̱͓̼̟̃̄̀̽̎̏͒̿̓͒͗́͘̕T̵̨̠͓̞̝͓͈̬̝͐́̈̈́̇̂͌̎̈́̒͝E̷͍̜̺̼̯̔̅̉̃Ŗ̸̪̝̰̝̇͐̓̅̔̽̏͛͆̐͆̈́̚̚ ̷̨̦͖̫̬̦̙̩̀̒̀͂̾͛̓̃̀̕P̴̛̘̺͈̬̺̱̒̋͆́͐͒̏̿̿͜Ļ̶̼͈̮̮̇A̷̯͎̩̼̙͙͊͑͒C̸͍̩̰̞̣̞͛̌̌̅́͝E̴̢̨̞̻͙̳̠̟̯̲͚͇̰͉̋̋̐͝')
     }

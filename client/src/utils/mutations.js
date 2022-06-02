@@ -35,6 +35,12 @@ mutation userUpdate ($userUpdateInput: UpdateUserInput!) {
   userUpdate(userUpdateInput: $userUpdateInput){
     _id
   }
-}
+}`
 
+export const REGISTER_EVENT = gql`
+  mutation registerEvent($eventId: ID){
+    registerEvent(eventId: $eventId){
+      _id
+    }
+  }
 `

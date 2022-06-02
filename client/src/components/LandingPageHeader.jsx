@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { ButtonGroup } from '@mui/material';
+import { ButtonGroup, Link } from '@mui/material';
 import Auth from '../utils/auth';
 
 const navButtons = [{ text: "Our Mission", link: "#our-mission" }, { text: "Featured Leaders", link: "#featured-leaders" }, { text: "Testimonials", link: "#testimonials" }, { text: "Contact Us", link: "#contact-us" }]
@@ -15,7 +15,7 @@ const LandingPageHeader = () => {
       <AppBar position="static" sx={{ borderColor: '#fce138', borderStyle: 'solid', borderRadius: '50px', backgroundColor: "#024e76" }}>
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#00A36C' }}>
-            <span style={{ color: '#fce138' }}>Progress</span>Hub
+          <Link href="/"><span style={{ color: '#fce138' }}>Progress</span>Hub</Link>
           </Typography>
           <ButtonGroup>
             {navButtons.map(button => (

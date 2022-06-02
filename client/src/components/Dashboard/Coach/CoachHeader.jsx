@@ -22,7 +22,7 @@ import FitnessCenterRoundedIcon from '@mui/icons-material/FitnessCenterRounded';
 import ContactPageRoundedIcon from '@mui/icons-material/ContactPageRounded';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { Link } from 'react-router-dom';
-
+import "../../Hero/style.css"
 
 const drawerWidth = 240;
 
@@ -86,7 +86,7 @@ export default function CoachHeader(props) {
   };
 
   return (
-    <Box sx={{ display: 'flex', backgroundColor: "#575757" }}>
+    <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: "#024e76" }}>
         <Toolbar>

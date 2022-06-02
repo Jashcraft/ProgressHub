@@ -21,15 +21,43 @@ export const ME = gql`
         location
         timeSlot
         duration
-        ownerID
+        ownerID {
+          fullName
+        }
         participants {
           _id
           email
           firstName
           lastName
+          fullName
         }
       }
 
+    }
+  }
+`
+
+export const ALL_EVENTS_QUERY = gql`
+  query {
+    events {
+      _id
+      title
+      description
+      location
+      timeSlot
+      duration
+      ownerID {
+        fullName
+        city
+        state
+      }
+      participants {
+        _id
+        email
+        firstName
+        lastName
+        fullName
+      }
     }
   }
 `

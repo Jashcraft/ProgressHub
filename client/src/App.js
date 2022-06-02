@@ -13,7 +13,11 @@ import { setContext } from '@apollo/client/link/context';
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateEvent from "./components/Events/CreateEvent";
 import ProfileEdit from "./components/Dashboard/Edit/ProfileEdit";
-import ContactPage from "./components/ContactPage/ContactPage";
+import { LocalizationProvider } from "@mui/x-date-pickers-pro";
+import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs'
+import MyEvents from "./components/Events/MyEvents";
+import ContactPageWithHeader from "./components/ContactPage/ContactPageWithHeader";
+import AllEventsWithHeader from "./components/Events/AllEventsWithHeader";
 
 
 const httpLink = createHttpLink({
@@ -38,18 +42,22 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <BrowserRouter>
-      <Routes>
-        <Route path='/login' element={<Login/>}/>
-        <Route path='/' element={<LandingPage/>} />
-        <Route path='/dashboard' element={<Dashboard/>} />
-        <Route path='/create-event' element={<CreateEvent/>} />
-        <Route path='/edit-profile' element={<ProfileEdit/>} />
-        <Route path='/contact-us' element={<ContactPage/>} />
-      </Routes>
-      </BrowserRouter>
-    </ApolloProvider>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <ApolloProvider client={client}>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/login' element={<Login />} />
+            <Route path='/' element={<LandingPage />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/create-event' element={<CreateEvent />} />
+            <Route path='/edit-profile' element={<ProfileEdit />} />
+            <Route path='/contact-us' element={<ContactPageWithHeader />} />
+            <Route path='/my-events' element={<MyEvents/>} />
+            <Route path='/search-events' element={<AllEventsWithHeader/>} />
+          </Routes>
+        </BrowserRouter>
+      </ApolloProvider>
+    </LocalizationProvider>
   );
 }
 

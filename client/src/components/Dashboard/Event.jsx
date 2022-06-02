@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
+import moment from 'moment'
 
 
 export default function Event(props) {
@@ -20,6 +21,9 @@ export default function Event(props) {
         subheader={props.timeSlot}
       />
       <CardContent>
+      <Typography variant="subtitle1">
+          {`${props.duration} minutes`}
+        </Typography>
         <Typography variant="body2" color="text.secondary">
           {props.description}
         </Typography>

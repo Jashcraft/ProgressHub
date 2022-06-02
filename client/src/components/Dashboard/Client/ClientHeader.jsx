@@ -130,7 +130,7 @@ export default function ClientHeader(props) {
         <Divider sx={{ backgroundColor: "whitesmoke" }} />
         <List>
 
-          {[{ value: 'My Events', href: "/my-events" }, { value: 'Search Events', href: "/search-events" }, { value: 'Billing Info', href: "/billing" }].map((navButton, index) => (
+          {[{ value: 'Dashboard', href: '/dashboard'}, { value: 'My Events', href: "/my-events" }, { value: 'Search Events', href: "/search-events" }, { value: 'Billing Info', href: "/billing" }].map((navButton, index) => (
             <ListItem key={navButton.value} disablePadding component={Link} to={navButton.href} sx={{color: "whitesmoke"}}>
               <ListItemButton >
                 <ListItemIcon>

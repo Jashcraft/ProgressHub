@@ -5,18 +5,19 @@ import { useMutation } from '@apollo/client';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
+import {DateTimePicker} from '@mui/x-date-pickers-pro'
 
-const formComponents = [{ value: "Title", name: "title" }, { value: "Description", name: "description" }, { value: "Location", name: "location" }, { value: "Time Slot", name: "timeSlot" }]
+const formComponents = [{ value: "Title", name: "title" }, { value: "Description", name: "description" }, { value: "Location", name: "location" }]
 
 
 const EventForm = () => {
   const [eventData, setEventData] = useState({
     title: "",
     description: "",
-    location: "",
-    timeSlot: ""
-  })
+    location: ""
+    })
   const [duration, setDuration] = useState(60)
+  const [time, setTime] = useState(new Date())
 
   const [addEvent, { error: addEventError }] = useMutation(ADDEVENT)
 
@@ -25,10 +26,14 @@ const EventForm = () => {
     setEventData({ ...eventData, [name]: value })
   }
 
+  const handleTimeChange = (e) => {
+    setTime(e.$d)
+  }
+
   const handleSubmit = async (event) => {
     await addEvent({
       variables: {
-        eventInput: { ...eventData, duration: parseInt(duration) }
+        eventInput: { ...eventData, duration: parseInt(duration), timeSlot: time }
       }
     });
 
@@ -52,6 +57,11 @@ const EventForm = () => {
               sx={{ width: "85%", mb: 3 }}
             />
           ))}
+          <DateTimePicker 
+            onChange={handleTimeChange}
+            value={time}
+            renderInput={(params) => <TextField {...params} />}
+          />
           <FormControl fullWidth>
             <InputLabel variant="standard" htmlFor="duration">
               Duration

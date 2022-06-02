@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 const Profile = (props) => {
   return (
 
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+    <Container maxWidth="lg" sx={{ mt: 4, mb: 4, bgcolor: '#36454F'}}>
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>
