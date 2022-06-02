@@ -15,7 +15,6 @@ import CreateEvent from "./components/Events/CreateEvent";
 import ProfileEdit from "./components/Dashboard/Edit/ProfileEdit";
 import ContactPage from "./components/ContactPage/ContactPage";
 
-import {} from 'react-media'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
