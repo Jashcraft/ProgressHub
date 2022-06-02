@@ -46,11 +46,11 @@ const Form = () => {
           id={component.name} 
           label={component.name} 
           variant="outlined" 
-          sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff", borderRadius: "50px", marginLeft: "65px" }} 
+          sx={{ width: "80%", height: "80%", ml: "62px", mb: "10px", backgroundColor: "#fff", borderRadius: "50px" }} 
           key={component.name} 
           onChange={handleInputChange}
           name={component.name}
-          type= {component=== "Password" ? 'password' : 'text'}
+          type= {component.value === "Password" ? 'password' : 'text'}
           />
         ))}
         <FormGroup>

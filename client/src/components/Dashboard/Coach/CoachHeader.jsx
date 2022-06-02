@@ -86,7 +86,7 @@ export default function CoachHeader(props) {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', backgroundColor: "#575757" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: "#024e76" }}>
         <Toolbar>
