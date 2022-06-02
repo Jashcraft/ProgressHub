@@ -13,6 +13,8 @@ import { setContext } from '@apollo/client/link/context';
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateEvent from "./components/Events/CreateEvent";
 
+import {} from 'react-media'
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
