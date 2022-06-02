@@ -7,10 +7,14 @@ const typeDefs = gql`
     lastName: String
     fullName: String
     email: String
-    groupSpeciality: String
+    groupSpecialty: String
     isCoach: Boolean
     city: String!
     events: [Event]
+    state: String
+    motto: String
+    why: String
+
     
   }
   type Event {
@@ -31,6 +35,13 @@ const typeDefs = gql`
     duration: Int
     ownerID: ID
   }
+  input UpdateUserInput {
+    groupSpecialty: String
+    city: String!
+    state: String
+    motto: String
+    why: String
+  }
   type Auth {
     token: ID!
     user: User!
@@ -40,6 +51,7 @@ const typeDefs = gql`
     user(id: ID): User
     event(id: ID): Event
     events: [Event]
+    me: User
   }
   
 
@@ -47,6 +59,7 @@ const typeDefs = gql`
     login(email: String!, password: String!): Auth
     addUser(firstName: String!, lastName: String!, email: String!, password: String!, groupSpecialty: String, isCoach: Boolean!, city: String!): Auth
     addEvent(eventInput: EventInput): Event
+    userUpdate(userUpdateInput: UpdateUserInput): User
   }
   `;
 // Added mutation for login and adduser (From Class Module 21) will see if this is usable.

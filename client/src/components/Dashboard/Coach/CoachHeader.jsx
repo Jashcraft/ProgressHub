@@ -129,7 +129,7 @@ export default function CoachHeader(props) {
         </DrawerHeader>
         <Divider sx={{ backgroundColor: "whitesmoke" }} />
         <List>
-          {[{ value: 'Create Event', href: "/create-event" }, { value: 'My Events', href: "/my-events" }, { value: 'Clients', href: "/clients" }].map((navButton, index) => (
+          {[{value: 'Dashboard', href: "/Dashboard"}, { value: 'Create Event', href: "/create-event" }, { value: 'My Events', href: "/my-events" }, { value: 'Clients', href: "/clients" }].map((navButton, index) => (
             <ListItem key={navButton.value} disablePadding component={Link} to={navButton.href} sx={{color: "whitesmoke"}}>
               <ListItemButton>
                 <ListItemIcon>

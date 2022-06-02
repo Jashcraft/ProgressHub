@@ -14,6 +14,7 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username })
         .select('-__v -password')
+        .populate('events');
       // .populate('Clients')
 
     },
@@ -24,6 +25,19 @@ const resolvers = {
     event: async (parent, {id}) => {
       return Event.findOne({id})
       .select('-__v')
+    },
+    me: async (parent, args, context) => {
+      if (context.user){
+        const userData = await User.findOne(
+          {
+            _id: context.user._id
+          }
+        )
+        .select("-__v -password")
+        .populate("events")
+        return userData
+      }
+      throw new AuthenticationError("No User Signed In")
     }
   },
   Mutation: {
@@ -62,7 +76,20 @@ const resolvers = {
         return newEvent;
       }
       throw new AuthenticationError('Incorrect credentials')
+    },
+    userUpdate: async (parent, args, context) => {
+      if (context.user){
+        const {userUpdateInput} = args
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id},
+          { ...userUpdateInput },
+          { new: true }
+        )
+        return updatedUser;
+      }
+      throw new AuthenticationError('T̸͉̹̟̝̪͂̾̓̒̎̔̿̀͝H̵͕͔̦͑̐̌̑̃͌͆͂̓̏̈́̕͘͝Ề̴̢̛̠̫͉͖̙͇̊̓̈́̄̇͋̊̈͝ͅ ̷̧͖̱̣͍̹͈̲̤̘͔̳̗͈̱̈́̈͂̎͋̇̅̔̈̓͒͑̆͠U̶̢̲̯̣̥̜̩̎̓̂͘͜S̴̢̘̞͚̜͔̲̻͖͉̝̦̱̳̅̀͗̊͒̽̍̊͂̅͜͝E̸̠͌͐̓̈́́̃̀̀̔̄̄̈͑͘͠͝R̴̢̛̥̖͓̞̳͉̰̰̩͖̺̹̔̒̊͗̇̋͂̔̽͂͘̚̕͘̕ͅ ̵̧̬̹͔̯̱̝͔͔̬̤̙̟̗̈́͂̓̑͗͋̎̌̈̉̈́͋̂̕̕͝͝͝I̷̡̠̺͕͖͔̤̹̹͈̤͐̇̐̌̾̽͂̈́̈́̉͌́̆ͅŠ̶͎͖͓͚͓̲͝ ̵̢̡͈̦̪̪̝͙̟̫͊̇̓̀̃̎͒͗̕̕ͅĨ̶̡̹͇̯̭̣̼͚̺̣̦͈̬̺̗̳͉̑̎̀̐̍̊͑̃̅̆̒́͌̓̂̔ͅǸ̷͇͈̹͉̦̞̖̹̟̰̞̌̈́̿͊̄͂͘͝ ̶̢̥̗̦̙̦̝͔̥̠̗̭̫͔̜̐͜ͅÃ̷̧̢̭̫̟̯̹͇̊̉̇͊̚̚̕͜͝ ̸̛̲͈̣̗͔̹̭̳̳͕̀̋͗͑́̚͝ͅB̸̢̨̛͇̤̩̬͙̠͔̮̩̮͈͕̰̈̓͋̍͐͊̀̐́̿̂̾̎È̶͍͑̎̎͋̒̽͂̃̆͒Ţ̴̮̩͉̝̱͓̼̟̃̄̀̽̎̏͒̿̓͒͗́͘̕T̵̨̠͓̞̝͓͈̬̝͐́̈̈́̇̂͌̎̈́̒͝E̷͍̜̺̼̯̔̅̉̃Ŗ̸̪̝̰̝̇͐̓̅̔̽̏͛͆̐͆̈́̚̚ ̷̨̦͖̫̬̦̙̩̀̒̀͂̾͛̓̃̀̕P̴̛̘̺͈̬̺̱̒̋͆́͐͒̏̿̿͜Ļ̶̼͈̮̮̇A̷̯͎̩̼̙͙͊͑͒C̸͍̩̰̞̣̞͛̌̌̅́͝E̴̢̨̞̻͙̳̠̟̯̲͚͇̰͉̋̋̐͝')
     }
+
   }
 }
 

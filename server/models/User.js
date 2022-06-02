@@ -73,9 +73,9 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual("fullName").get(() => {
+userSchema.virtual("fullName").get(function () {
   return `${this.firstName} ${this.lastName}`
-})
+});
 
 const User = model('User', userSchema);
 

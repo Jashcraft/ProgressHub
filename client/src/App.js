@@ -12,9 +12,9 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Dashboard from "./components/Dashboard/Dashboard";
 import CreateEvent from "./components/Events/CreateEvent";
+import ProfileEdit from "./components/Dashboard/Edit/ProfileEdit";
 import ContactPage from "./components/ContactPage/ContactPage";
 
-import {} from 'react-media'
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,6 +45,7 @@ function App() {
         <Route path='/' element={<LandingPage/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path='/create-event' element={<CreateEvent/>} />
+        <Route path='/edit-profile' element={<ProfileEdit/>} />
         <Route path='/contact-us' element={<ContactPage/>} />
       </Routes>
       </BrowserRouter>
