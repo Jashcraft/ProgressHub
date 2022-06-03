@@ -8,9 +8,10 @@ import moment from 'moment';
 const Events = () => {
   const {loading, data: userData} = useQuery(ME);
   return (
-    <Grid display='flex' flexGrow={1} >
-      <Typography variant='h5'>Events:</Typography>
-      {!loading && <Grid display='flex' flexGrow={1} flexShrink={1}>
+    <Grid display='flex' flexGrow={1} flexDirection='column' >
+      <Grid sx={{mb: '15px'}}><Typography variant='h5'>Events:</Typography></Grid>
+
+      {!loading && <Grid container display='flex' flexGrow={1} flexShrink={1} spacing={2}>
         {userData.me.events.map(event => (
           <Event
             title={event.title}

@@ -10,7 +10,7 @@ import moment from 'moment'
 
 export default function Event(props) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card  sx={{ maxWidth: 345, bgcolor: '#151515', margin: 'auto' }}>
       <CardHeader
         avatar={
           <Avatar sx={{ bgcolor: red[500] }}>

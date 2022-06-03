@@ -6,7 +6,7 @@ import Paper from '@mui/material/Paper';
 const Profile = (props) => {
   return (
 
-    <Container maxWidth="lg" sx={{ mt: 4, mb: 4, bgcolor: '#36454F'}}>
+    <Container sx={{ mt: 4, mb: 4, bgcolor: '#36454F', width: "100%", height: "100vh"}}>
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>
@@ -16,7 +16,9 @@ const Profile = (props) => {
               display: 'flex',
               flexDirection: 'column',
               minHeight: 240,
+              bgcolor: '#36454F'
             }}
+            elevation={6}
           > 
           {props.infoSection}
           </Paper>
@@ -29,14 +31,16 @@ const Profile = (props) => {
               display: 'flex',
               flexDirection: 'column',
               height: 240,
+              bgcolor: '#36454F'
             }}
+            elevation={6}
           > 
           {props.avatarSection}
           </Paper>
         </Grid>
         {/* Recent Orders */}
         <Grid item xs={12}>
-          <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+          <Paper elevation={6} sx={{ p: 2, display: 'flex', flexDirection: 'column', bgcolor: '#36454F' }}>
             {props.eventSection}
           </Paper>
         </Grid>

@@ -9,7 +9,7 @@ import ClientHeader from './ClientHeader';
 const ClientDashboard = () => {
   return (
       <ClientHeader>
-        <Profile infoSection={<InfoSection/>} avatarSection={<AvatarSection/>} eventSection={<Events/>}></Profile>
+        <Profile sx={{width: "90%"}} infoSection={<InfoSection/>} avatarSection={<AvatarSection/>} eventSection={<Events/>}></Profile>
       </ClientHeader>
   )
 }

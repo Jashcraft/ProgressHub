@@ -41,9 +41,9 @@ const EventForm = () => {
   }
   // DO NOT TOUCH THIS
   return (
-    <Grid container display='flex' flexGrow={1} flexShrink={1} justifyContent='center'>
-      <Paper elevation={6} sx={{ minWidth: "61%", textAlign: "center" }} >
-        <Typography variant='h4' >Create An Event</Typography>
+    <Grid container display='flex' flexGrow={1} flexShrink={1} justifyContent='center' sx={{bgcolor: '#36454F', height: '100vh'}}>
+      <Paper elevation={6} sx={{ minWidth: "61%", textAlign: "center", bgcolor: '#151515' }} >
+        <Typography variant='h4' sx={{color: 'whitesmoke'}}>Create An Event</Typography>
         <Grid display='flex' flexDirection='column' width='100%' alignItems='center'>
           {formComponents.map(component => (
             <TextField
@@ -54,15 +54,15 @@ const EventForm = () => {
               onChange={handleInputChange}
               name={component.name}
               type="text"
-              sx={{ width: "85%", mb: 3 }}
+              sx={{ width: "85%", mb: 3, bgcolor: "whitesmoke" }}
             />
           ))}
           <DateTimePicker 
             onChange={handleTimeChange}
             value={time}
-            renderInput={(params) => <TextField {...params} />}
+            renderInput={(params) => <TextField {...params} sx={{bgcolor: 'whitesmoke', mb: '15px'}} />}
           />
-          <FormControl fullWidth>
+          <FormControl sx={{bgcolor: "whitesmoke"}} fullWidth>
             <InputLabel variant="standard" htmlFor="duration">
               Duration
             </InputLabel>

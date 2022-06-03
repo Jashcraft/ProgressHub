@@ -42,15 +42,15 @@ const EditOptions = () => {
 
 
   return (
-    <Grid>
-      <Paper elevation={6} sx={{ width: "80%", display: "flex", flexDirection: 'column', backgroundColor: "#024e76", color: "#fff", borderRadius: "50px", borderColor: "#fce138", borderStyle: "solid" }}>
-        <Typography variant='h4' sx={{width: "100%", textAlign: "center", margin: "15px 0px", color: "#fce138", fontWeight: "bold"}}>Join Us Today!</Typography>
+    <Grid container justifyContent='center' height='55%'>
+      <Paper elevation={6} sx={{ justifyContent: 'space-between', width: "80%", display: "flex", flexDirection: 'column', backgroundColor: "#024e76", color: "#fff", borderRadius: "50px", borderColor: "#fce138", borderStyle: "solid", alignItems: 'center' }}>
+        <Typography variant='h4' sx={{width: "100%", textAlign: "center", margin: "15px 0px", color: "#fce138", fontWeight: "bold"}}>Edit your information</Typography>
         {!loading && formComponents.map(component => (
           <TextField 
           id={component.name} 
           label={component.name} 
           variant="outlined" 
-          sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff", borderRadius: "50px", marginLeft: "65px" }} 
+          sx={{ width: "80%", ml: "10px", mb: "10px", backgroundColor: "#fff", marginLeft: "65px" }} 
           key={component.name} 
           onChange={handleInputChange}
           name={component.name}

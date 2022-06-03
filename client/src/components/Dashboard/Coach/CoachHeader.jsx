@@ -86,7 +86,7 @@ export default function CoachHeader(props) {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', height: "100vh" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open} sx={{ backgroundColor: "#024e76" }}>
         <Toolbar>
@@ -101,7 +101,7 @@ export default function CoachHeader(props) {
           </IconButton>
           <Grid display="flex" justifyContent="center" width="100%" textAlign="center" >
             <Typography variant="h6" component="div" sx={{ flexGrow: 1, color: '#00A36C' }}>
-              <span style={{ color: '#fce138' }}>Progress</span>Hub
+              <span style={{ color: '#fce138' }}>Progress</span ><span style={{ color: '#00A36C' }}>Hub</span>
             </Typography>
           </Grid>
         </Toolbar>
@@ -165,7 +165,7 @@ export default function CoachHeader(props) {
           </List>
         </Grid>
       </Drawer>
-      <Main open={open}>
+      <Main sx={{height: "100vh"}} open={open}>
         <DrawerHeader />
         {props.children}
       </Main>

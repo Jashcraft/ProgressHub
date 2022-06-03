@@ -10,8 +10,9 @@ const EventSelection = () => {
   const { loading, data: userData } = useQuery(ME);
 
   return (
-    <Paper>
-      <Typography variant='h3'>My Events</Typography>
+    <Paper sx={{bgcolor: '#36454F', height: '85vh', textAlign: 'center'}}>
+
+      <Typography variant='h3' sx={{mb: '15px'}}>My Events</Typography>
       <Container>
         <Grid container display='flex' spacing={4}>
           {!loading && userData.me.events.map(event => (
